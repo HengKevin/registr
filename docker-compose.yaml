@@ -13,7 +13,6 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules # Mount the pnpm store if it's outside the project directory
-
   auth:
     build:
       context: .
@@ -27,7 +26,6 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules # Mount the pnpm store if it's outside the project directory
-
   mongo:
     image: mongo
     ports:
