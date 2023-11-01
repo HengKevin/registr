@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   reservation:
     build:
@@ -11,7 +12,8 @@ services:
       - '3000:3000'
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - /usr/src/app/node_modules # Mount the pnpm store if it's outside the project directory
+
   auth:
     build:
       context: .
@@ -24,6 +26,9 @@ services:
       - '3001:3001'
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - /usr/src/app/node_modules # Mount the pnpm store if it's outside the project directory
+
   mongo:
     image: mongo
+    ports:
+      - '27017:27017'
