@@ -10,9 +10,9 @@
   "author": "Khefff",
   "license": "ISC",
   "dependencies": {
-    "nodemailer": "^6.9.7"
+    "nodemailer": "6.9.7"
   },
   "devDependencies": {
-    "@types/nodemailer": "6.4.14"
+    "@types/nodemailer": "^6.4.14"
   }
 }

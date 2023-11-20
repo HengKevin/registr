@@ -10,6 +10,6 @@
   "author": "Khefff",
   "license": "ISC",
   "dependencies": {
-    "stripe": "^14.2.0"
+    "stripe": "14.2.0"
   }
 }

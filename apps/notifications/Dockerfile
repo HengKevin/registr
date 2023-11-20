@@ -1,20 +1,20 @@
-FROM node:alpine as development
+FROM node:alpine As development
 
 WORKDIR /usr/src/app
 
 COPY package.json ./
-COPY pnpm-lock.yaml ./
+COPY yarn.lock ./
 COPY tsconfig.json tsconfig.json
+COPY nest-cli.json nest-cli.json
 
-RUN npm install -g pnpm
-RUN pnpm install
+RUN yarn install
 
-COPY apps/notifications apps/notifications
+COPY apps/payments apps/payments
 COPY libs libs
 
-RUN cd apps/notifications && pnpm install
+RUN cd apps/payments && yarn install
 
-RUN pnpm run build
+RUN yarn run build payments
 
 FROM node:alpine as production
 
@@ -24,12 +24,8 @@ ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 
 COPY package.json ./
-COPY pnpm-lock.yaml ./
+COPY yarn.lock ./
 
-RUN npm install -g pnpm
-
-RUN pnpm install --prod
+RUN yarn install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
-
-CMD ["node", "dist/apps/notifications/main"]
