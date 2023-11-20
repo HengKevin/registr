@@ -1,0 +1,69 @@
+steps:
+  # Reservation
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/reservation/production",
+        "-f",
+        "apps/reservation/Dockerfile",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builder/docker"
+    args:
+      [
+        "push",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/reservation/production",
+      ]
+  # Auth
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/auth/production",
+        "-f",
+        "apps/auth/Dockerfile",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builder/docker"
+    args:
+      [
+        "push",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/auth/production",
+      ]
+  # Payments
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/payments/production",
+        "-f",
+        "apps/payments/Dockerfile",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builder/docker"
+    args:
+      [
+        "push",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/payments/production",
+      ]
+  # Notifications
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/notifications/production",
+        "-f",
+        "apps/notifications/Dockerfile",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builder/docker"
+    args:
+      [
+        "push",
+        "asia-southeast1-docker.pkg.dev/swift-radar-404502/notifications/production",
+      ]
