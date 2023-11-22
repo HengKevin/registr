@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: reservation
+  name: reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reservation
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: reservation
+    spec:
+      containers:
+        - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/reservation/production:latest
+          name: reservation

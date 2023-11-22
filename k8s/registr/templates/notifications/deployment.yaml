@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: notifications
+  name: notifications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notifications
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: notifications
+    spec:
+      containers:
+        - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/notifications/production:latest
+          name: notifications
