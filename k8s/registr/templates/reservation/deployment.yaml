@@ -18,3 +18,9 @@ spec:
       containers:
         - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/reservation/production:latest
           name: reservation
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb
+                  key: connectionString
