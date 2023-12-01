@@ -9,12 +9,30 @@ spec:
   selector:
     matchLabels:
       app: notifications
-  strategy: {}
   template:
     metadata:
       labels:
         app: notifications
     spec:
       containers:
-        - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/notifications/production:latest
+        - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/notifications/production
           name: notifications
+          env:
+            - name: PORT
+              value: "3000"
+            - name: GOOGLE_OAUTH_CLIENT_ID
+              value: 400861962086-3fsl2uokjc72a3oc5htda3uprns2oka6.apps.googleusercontent.com
+            - name: GOOGLE_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: google
+                  key: clientSecret
+            - name: GOOGLE_OAUTH_REFRESH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: google
+                  key: refreshToken
+            - name: SMTP_USER
+              value: devtestchamp@gmail.com
+          ports:
+            - containerPort: 3000

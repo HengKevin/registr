@@ -11,7 +11,6 @@ export class NotificationsController {
   @UsePipes(new ValidationPipe())
   @EventPattern('notify')
   async notifyEmail(@Payload() data: NotifyEmailDto) {
-    console.log('i was here');
     await this.notificationsService.notifyEmail(data);
   }
 }
