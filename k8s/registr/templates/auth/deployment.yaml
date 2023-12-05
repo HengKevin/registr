@@ -15,7 +15,7 @@ spec:
         app: auth
     spec:
       containers:
-        - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/auth/production
+        - image: 356788004990.dkr.ecr.ap-southeast-1.amazonaws.com/auth:latest
           name: auth
           env:
             - name: MONGODB_URI
@@ -37,3 +37,10 @@ spec:
           ports:
             - containerPort: 3002
             - containerPort: 3003
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

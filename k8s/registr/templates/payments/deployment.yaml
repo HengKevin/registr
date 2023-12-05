@@ -15,7 +15,7 @@ spec:
         app: payments
     spec:
       containers:
-        - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/payments/production:latest
+        - image: 356788004990.dkr.ecr.ap-southeast-1.amazonaws.com/payments:latest
           name: payments
           env:
             - name: PORT
@@ -31,3 +31,10 @@ spec:
                   key: apiKey
           ports:
             - containerPort: 3001
+          resources:
+            requests:
+                memory: "64Mi"
+                cpu: "250m"
+            limits:
+                memory: "128Mi"
+                cpu: "500m"

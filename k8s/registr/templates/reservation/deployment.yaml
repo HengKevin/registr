@@ -16,7 +16,7 @@ spec:
         app: reservation
     spec:
       containers:
-        - image: asia-southeast1-docker.pkg.dev/swift-radar-404502/reservation/production:latest
+        - image: 356788004990.dkr.ecr.ap-southeast-1.amazonaws.com/reservation:latest
           name: reservation
           env:
             - name: MONGODB_URI
